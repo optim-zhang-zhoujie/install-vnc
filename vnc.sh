@@ -14,7 +14,7 @@ touch ~/.vnc/xstartup
 
 cat <<EOT >> ~/.vnc/xstartup
 #!/bin/bash
-xrdb $HOME/.Xresources
+xrdb \$HOME/.Xresources
 startxfce4 &
 EOT
 
@@ -29,11 +29,11 @@ After=syslog.target network.target
 
 [Service]
 Type=forking
-User=$USER
-Group=$USER
-WorkingDirectory=$HOME
+User=\$USER
+Group=\$USER
+WorkingDirectory=\$HOME
 
-PIDFile=$HOME/.vnc/%H:%i.pid
+PIDFile=\$HOME/.vnc/%H:%i.pid
 ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1
 ExecStart=/usr/bin/vncserver -depth 24 -geometry 1280x800 -localhost :%i
 ExecStop=/usr/bin/vncserver -kill :%i
