@@ -20,20 +20,20 @@ EOT
 
 chmod +x ~/.vnc/xstartup
 
-sudo touch /etc/systemd/system/vncserver@.service
+touch vncserver@.service
 
-sudo cat <<EOT >> /etc/systemd/system/vncserver@.service
+cat <<EOT >> ./vncserver@.service
 [Unit]
 Description=Start TightVNC server at startup
 After=syslog.target network.target
 
 [Service]
 Type=forking
-User=\$USER
-Group=\$USER
-WorkingDirectory=\$HOME
+User=$USER
+Group=$USER
+WorkingDirectory=$HOME
 
-PIDFile=\$HOME/.vnc/%H:%i.pid
+PIDFile=$HOME/.vnc/%H:%i.pid
 ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1
 ExecStart=/usr/bin/vncserver -depth 24 -geometry 1280x800 -localhost :%i
 ExecStop=/usr/bin/vncserver -kill :%i
@@ -41,6 +41,8 @@ ExecStop=/usr/bin/vncserver -kill :%i
 [Install]
 WantedBy=multi-user.target
 EOT
+
+sudo mv ./vncserver@.service /etc/systemd/system/vncserver@.service
 
 sudo systemctl daemon-reload
 sudo systemctl enable vncserver@1.service
