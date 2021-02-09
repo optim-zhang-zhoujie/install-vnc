@@ -30,7 +30,7 @@ chmod +x ~/.vnc/xstartup
 
 sudo touch /etc/systemd/system/vncserver@.service
 
-cat <<EOT >> ~/.vnc/xstartup
+sudo cat <<EOT >> ~/.vnc/xstartup
 [Unit]
 Description=Start TightVNC server at startup
 After=syslog.target network.target
