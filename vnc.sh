@@ -2,7 +2,7 @@
 
 echo "Installing vnc..."
 sudo apt update
-sudo apt install tightvncserver
+sudo apt install -y tightvncserver
 
 vncserver
 
