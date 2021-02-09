@@ -11,7 +11,7 @@ send "password"
 expect "Verify:"
 send "password"
 
-expect "Would you like to enter a view-only password (y/n)?"
+expect "Would you like to enter a view-only password (y/n)? "
 send "n"
 
 vncserver -kill :1
