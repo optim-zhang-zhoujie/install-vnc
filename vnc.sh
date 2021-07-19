@@ -48,5 +48,3 @@ sudo mv ./vncserver@.service /etc/systemd/system/vncserver@.service
 sudo systemctl daemon-reload
 sudo systemctl enable vncserver@1.service
 sudo systemctl start vncserver@1
-sudo systemctl status vncserver@1
-q
